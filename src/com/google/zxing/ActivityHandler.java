@@ -168,7 +168,7 @@ public final class ActivityHandler extends Handler {
 	 * @author: luohao
 	 * @version: 2015-4-3 下午5:38:24
 	 */
-	public static interface IScanListener {
+	interface IScanListener {
 		public void handleDecode(Result<?> obj, Bitmap barcode);
 
 		public void drawViewfinder();
