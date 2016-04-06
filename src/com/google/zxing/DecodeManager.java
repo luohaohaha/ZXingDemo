@@ -72,7 +72,7 @@ public class DecodeManager implements Callback {
 		return instance;
 	}
 
-	public void attchToActivity(Activity act, IDecodeResultListener resultListener) {
+	public void attachToActivity(Activity act, IDecodeResultListener resultListener) {
 		this.currAct = act;
 		this.resultListener = resultListener;
 		onCreate();
