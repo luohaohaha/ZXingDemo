@@ -30,10 +30,10 @@ import com.google.zxing.view.ViewfinderView;
 
 /**
  * ClassName: DecodeManager <br/>
- * Description: TODO . <br/>
+ * Description: 解码处理类 . <br/>
  * date: 2015-12-15 下午3:33:44 <br/>
  * 
- * @author �?
+ * @author luohao
  * @version
  * @since JDK 1.6
  */
@@ -86,11 +86,11 @@ public class DecodeManager implements Callback {
 			currAct.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 			ZXingConfigManager.getInstance().setOrientation(Orientation.LANDSCAPE);
 		}
-		initOnCreat();
+		initOnCreate();
 
 	}
 
-	private void initOnCreat() {
+	private void initOnCreate() {
 		hasSurface = false;
 		inactivityTimer = new InactivityTimer(currAct);
 		beepManager = new BeepManager(currAct);
@@ -208,12 +208,6 @@ public class DecodeManager implements Callback {
 		}
 	}
 
-	/**
-	 * TODO �?单描述该方法的实现功能（可�?�）.
-	 * 
-	 * @see android.view.SurfaceHolder.Callback#surfaceCreated(android.view.SurfaceHolder)
-	 * @param holder
-	 */
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
@@ -225,16 +219,6 @@ public class DecodeManager implements Callback {
 		}
 	}
 
-	/**
-	 * TODO �?单描述该方法的实现功能（可�?�）.
-	 * 
-	 * @see android.view.SurfaceHolder.Callback#surfaceChanged(android.view.SurfaceHolder,
-	 *      int, int, int)
-	 * @param holder
-	 * @param format
-	 * @param width
-	 * @param height
-	 */
 
 	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
@@ -243,12 +227,6 @@ public class DecodeManager implements Callback {
 
 	}
 
-	/**
-	 * TODO �?单描述该方法的实现功能（可�?�）.
-	 * 
-	 * @see android.view.SurfaceHolder.Callback#surfaceDestroyed(android.view.SurfaceHolder)
-	 * @param holder
-	 */
 
 	@Override
 	public void surfaceDestroyed(SurfaceHolder holder) {
