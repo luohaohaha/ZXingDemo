@@ -78,7 +78,7 @@ final class DecodeHandler extends Handler {
 		long start = System.currentTimeMillis();
 		Result<?> rawResult = null;
 		if (ZXingConfigManager.getInstance().isPortrait()) {
-			// ��������
+			//竖屏设置
 			byte[] rotatedData = new byte[data.length];
 			for (int y = 0; y < height; y++) {
 				for (int x = 0; x < width; x++)
@@ -89,7 +89,7 @@ final class DecodeHandler extends Handler {
 			height = tmp;
 			data = rotatedData;
 		}
-		/***************** ���Ƿָ��� ����Ϊ�������� ******************/
+		/***************** 横屏去除上面代码********/
 		PlanarYUVLuminanceSource source = cameraManager.buildLuminanceSource(data, width, height);
 		if (source != null) {
 			BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
