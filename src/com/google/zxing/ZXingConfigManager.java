@@ -8,13 +8,12 @@
 
 package com.google.zxing;
 
-
 /**
  * ClassName: OrientationManager <br/>
- * Description: 横竖屏设�? . <br/>
+ * Description: 设置类 . <br/>
  * date: 2015-12-14 上午11:21:33 <br/>
  * 
- * @author �?
+ * @author luohao
  * @version
  * @since JDK 1.6
  */
@@ -43,7 +42,7 @@ public class ZXingConfigManager {
 
 	private Orientation orientation = Orientation.PORTRAIT;
 
-	public void setOrientation(Orientation orientation) {
+	void setOrientation(Orientation orientation) {
 
 		this.orientation = orientation;
 	}
@@ -56,7 +55,7 @@ public class ZXingConfigManager {
 		return Orientation.LANDSCAPE == orientation;
 	}
 
-	public enum Orientation {
+	enum Orientation {
 		PORTRAIT, LANDSCAPE
 	}
 
