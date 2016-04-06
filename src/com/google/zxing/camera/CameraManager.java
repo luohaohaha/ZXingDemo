@@ -239,11 +239,11 @@ public final class CameraManager {
 			int height = findDesiredDimensionInRange(screenResolution.y, MIN_FRAME_HEIGHT, MAX_FRAME_HEIGHT);
 
 			if (ZXingConfigManager.getInstance().isLanscape()) {
+				// 横屏设置
 				int leftOffset = (screenResolution.x - width) / 2;
 				int topOffset = (screenResolution.y - height) / 2;
 				framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
 			} else {
-				// ������ɨ���Ĵ�С
 				int leftOffset = (screenResolution.x - width) / 2;
 				int topOffset = (screenResolution.y - width) / 2;
 				framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + width);
@@ -285,7 +285,7 @@ public final class CameraManager {
 				return null;
 			}
 			if (ZXingConfigManager.getInstance().isLanscape()) {
-				// ��������
+				// 横屏设置
 				rect.left = rect.left * cameraResolution.x / screenResolution.x;
 				rect.right = rect.right * cameraResolution.x / screenResolution.x;
 				rect.top = rect.top * cameraResolution.y / screenResolution.y;
