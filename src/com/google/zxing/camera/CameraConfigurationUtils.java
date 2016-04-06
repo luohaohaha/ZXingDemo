@@ -283,7 +283,7 @@ public final class CameraConfigurationUtils {
 
 		double screenAspectRatio = 0d;
 		if (ZXingConfigManager.getInstance().isPortrait()) {
-			// 这里调换Y和X 不然竖屏部分机型会拉�?
+			// 这里调换Y和X 不然竖屏部分机型会拉伸
 			screenAspectRatio = (double) screenResolution.y / (double) screenResolution.x;
 		} else {
 			screenAspectRatio = (double) screenResolution.x / (double) screenResolution.y;
