@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.zxing.DecodeManager;
@@ -13,14 +16,14 @@ import com.google.zxing.Result;
 import com.google.zxing.DecodeManager.IDecodeResultListener;
 import com.google.zxing.ZXingConfigManager;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		DecodeManager.getInstance().attachToActivity(this, resultListener);
-		
+
 	}
 
 	private IDecodeResultListener resultListener = new IDecodeResultListener() {
@@ -31,7 +34,7 @@ public class MainActivity extends Activity {
 			// TODO Auto-generated method stub
 			Toast.makeText(MainActivity.this, "result===========" + obj.getText().toString(), Toast.LENGTH_SHORT)
 					.show();
-			canScan=false;
+			canScan = false;
 		}
 	};
 
@@ -60,8 +63,8 @@ public class MainActivity extends Activity {
 		super.onDestroy();
 
 	}
-	
-	private boolean canScan=true;
+
+	private boolean canScan = true;
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -69,34 +72,29 @@ public class MainActivity extends Activity {
 		// TODO Auto-generated method stub
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:
-			if(canScan){
+			if (canScan) {
 				return super.onKeyDown(keyCode, event);
 			}
 			DecodeManager.getInstance().restartPreviewAfterDelay(0L);
-			canScan=true;
+			canScan = true;
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);
 
 	}
 
+	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
+	public void onClick(View v) {
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		// TODO Auto-generated method stub
+		if (DecodeManager.getInstance().isFlashLightOpen()) {
+			((Button)v).setText("Open FlashLight");
+			DecodeManager.getInstance().closeFlashLight();
+			return;
 		}
-		return super.onOptionsItemSelected(item);
+		DecodeManager.getInstance().openFlashLight();
+		((Button)v).setText("Close FlashLight");
 	}
 
 }
