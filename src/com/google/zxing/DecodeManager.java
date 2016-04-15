@@ -208,7 +208,6 @@ public class DecodeManager implements Callback {
 		}
 	}
 
-
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
 
@@ -219,7 +218,6 @@ public class DecodeManager implements Callback {
 		}
 	}
 
-
 	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 
@@ -227,12 +225,23 @@ public class DecodeManager implements Callback {
 
 	}
 
-
 	@Override
 	public void surfaceDestroyed(SurfaceHolder holder) {
 
 		// TODO Auto-generated method stub
 		hasSurface = false;
+	}
+
+	public void openFlashLight() {
+		cameraManager.openFlashLight();
+	}
+
+	public void closeFlashLight() {
+		cameraManager.closeFlashLight();
+	}
+
+	public boolean isFlashLightOpen() {
+		return cameraManager.isFlashLightOpen();
 	}
 
 	public interface IDecodeResultListener {
