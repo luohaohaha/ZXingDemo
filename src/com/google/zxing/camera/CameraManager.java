@@ -22,6 +22,7 @@ import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.hardware.Camera;
+import android.hardware.Camera.Parameters;
 import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -79,12 +80,12 @@ public final class CameraManager {
 	 *            the mViewfinderView to set
 	 * @since JDK 1.6
 	 */
-	
-	private ViewfinderView mViewfinderView=null;
+
+	private ViewfinderView mViewfinderView = null;
 
 	public void setViewfinderView(ViewfinderView mViewfinderView) {
 
-		this.mViewfinderView=mViewfinderView;
+		this.mViewfinderView = mViewfinderView;
 		if (null == configManager)
 			return;
 		configManager.setViewfinderView(mViewfinderView);
@@ -229,11 +230,11 @@ public final class CameraManager {
 				return null;
 			}
 
-			if(screenResolution.x>mViewfinderView.getWidth()){
-				screenResolution.x=mViewfinderView.getWidth();
+			if (screenResolution.x > mViewfinderView.getWidth()) {
+				screenResolution.x = mViewfinderView.getWidth();
 			}
-			if(screenResolution.y>mViewfinderView.getHeight()){
-				screenResolution.y=mViewfinderView.getHeight();
+			if (screenResolution.y > mViewfinderView.getHeight()) {
+				screenResolution.y = mViewfinderView.getHeight();
 			}
 			int width = findDesiredDimensionInRange(screenResolution.x, MIN_FRAME_WIDTH, MAX_FRAME_WIDTH);
 			int height = findDesiredDimensionInRange(screenResolution.y, MIN_FRAME_HEIGHT, MAX_FRAME_HEIGHT);
@@ -364,4 +365,20 @@ public final class CameraManager {
 				false);
 	}
 
+	public void openFlashLight() {
+		Parameters mParameters = camera.getCamera().getParameters();
+		mParameters.setFlashMode(Parameters.FLASH_MODE_TORCH); 
+		camera.getCamera().setParameters(mParameters);
+	}
+	
+	public void closeFlashLight(){
+		Parameters mParameters = camera.getCamera().getParameters();
+		mParameters.setFlashMode(Parameters.FLASH_MODE_OFF); 
+		camera.getCamera().setParameters(mParameters);
+	}
+	
+	public boolean isFlashLightOpen(){
+		Parameters mParameters = camera.getCamera().getParameters();
+		return Parameters.FLASH_MODE_TORCH.equals(mParameters.getFlashMode());
+	}
 }
